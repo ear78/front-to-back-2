@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="ftb">
+    <head>
+        <meta charset="utf-8">
+        <title>Front To Back 2</title>
+    </head>
+    <body ng-controller="mainCtrl">
+
+        <button type="button" name="button" ng-click="getProducts()">click me!</button>
+        <div class="">
+            {{ products }}
+        </div>
+
+        
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+        <script src="./app/app.module.js"></script>
+        <script src="./app/app.routes.js"></script>
+        <script src="./app/controllers/mainCtrl.js"></script>
+        <script src="./app/services/mainService.js"></script>
+    </body>
+</html>
