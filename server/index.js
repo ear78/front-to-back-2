@@ -12,35 +12,24 @@ var db = massive.connectSync({
 app.set('db', db);
 
 app.use(cors());
+var productsCtrl = require('./controllers/productsCtrl.js');
+
 app.use(bodyParser.json());
 app.use(express.static("../public"));
 
 
 
-// GET ALL PRODUCTS
-app.get('/products', function(req,res,next){
-    db.get_all_products(function(err, products){
-        res.status(200).json(products);
-    });
-});
+//get all products
+app.get('/products', productsCtrl.getAll);
 
-app.get('/products/:id', function(req,res,next){
-    db.get_product(req.params.id, function(err, product){
-        res.status(200).json(product);
-    })
-})
+// find a particular product based on id
+app.get('/products/:id', productsCtrl.getProduct);
 
-app.post('/products', function(req,res,next){
+// create product inventory
+app.post('/products', productsCtrl.createProduct);
 
-})
-
-app.put('/products/:product', function(req,res,next){
-
-})
-
-app.delete('/products/:product', function(req,res,next){
-
-})
+// delete specific product inventory
+app.delete('/products/:name', productsCtrl.deleteProduct);
 
 
 
